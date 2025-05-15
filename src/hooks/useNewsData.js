@@ -26,8 +26,9 @@ function CollectAndUnifyDataFromAPIsResponce(responce) {
               article.url = article.web_url ? article.web_url : article.url
 
               article.urlToImage = article.urlToImage ? article.urlToImage : article.image
+
               if (Functions.isEmpty(article.urlToImage))
-                article.urlToImage = !Functions.isEmpty(article.multimedia) ? article.multimedia[0].url ? "https://www.nytimes.com/" + article.multimedia[0].url : null : null
+                article.urlToImage = !Functions.isEmpty(article.multimedia) && !Functions.isEmpty(article.multimedia.default) ? article.multimedia.default.url ? article.multimedia.default.url : null : null
 
               if (Functions.isEmpty(article.title) && !Functions.isEmpty(article.headline))
                 article.title = !Functions.isEmpty(article.headline.main) ? article.headline.main : null
